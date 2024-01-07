@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Signup and Signin</title>
+
+    <style>
+        body {
+            background: linear-gradient(to right, #2980b9, #6dd5fa);
+            font-family: 'Arial', sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+        }
+
+        form {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            transition: transform 0.3s ease-in-out;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input {
+            width: calc(100% - 16px);
+            padding: 8px;
+            margin-bottom: 12px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+
+        input[type="submit"] {
+            background-color: #3498db;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        input[type="submit"]:hover {
+            background-color: #2980b9;
+        }
+
+        .hidden {
+            display: none;
+        }
+
+        .toggle-btn {
+            background-color: #2ecc71;
+            color: #fff;
+            border: none;
+            padding: 10px;
+            margin: 10px 0;
+            cursor: pointer;
+        }
+
+        .toggle-btn:hover {
+            background-color: #27ae60;
+        }
+    </style>
+</head>
+<body>
+
+    <form id="signup-form" action="/signup" method="POST">
+        <h2>Sign Up</h2>
+        <label for="firstName">First Name:</label>
+        <input type="text" id="firstName" name="firstName" required>
+        <label for="lastName">Last Name:</label>
+        <input type="text" id="lastName" name="lastName" required>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="submit" value="Sign Up">
+        
+        <button class="toggle-btn" onclick="toggleForm('signin-form', 'signup-form')">Sign In</button>
+    </form>
+
+    <form id="signin-form" action="/signin" method="POST" class="hidden">
+        <h2>Sign In</h2>
+        <label for="emailOrUsername">Email/Username:</label>
+        <input type="text" id="emailOrUsername" name="emailOrUsername" required>
+        <label for="signinPassword">Password:</label>
+        <input type="password" id="signinPassword" name="password" required>
+        <input type="submit" value="Sign In">
+
+        <button class="toggle-btn" onclick="toggleForm('signup-form', 'signin-form')">Sign Up</button>
+    </form>
+
+    <script>
+        function toggleForm(showForm, hideForm) {
+            document.getElementById(showForm).classList.remove('hidden');
+            document.getElementById(hideForm).classList.add('hidden');
+        }
+    </script>
+</body>
+</html>
